@@ -1,0 +1,10 @@
+{
+  "username": "laotse",
+  "hostname": "tao",
+  "timezone": "Europe/Madrid",
+  "locale": "es_ES.UTF-8",
+  "keyboard": "es",
+  "disk": "/dev/disk/by-id/nvme-IM2P33F8-256GD1_2M142L19N4TD",
+  "secureBoot": false,
+  "tpmUnlock": false
+}
