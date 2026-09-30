@@ -26,10 +26,25 @@ case "$action" in
     ;;
   doctor)
     printf 'Escritorio: %s\n' "${XDG_CURRENT_DESKTOP:-sin sesion grafica}"
-    for app in niri dms ghostty pi orca-ide zcode brave firefox burpsuite; do
+    pretty_name=$(grep '^PRETTY_NAME=' /etc/os-release | cut -d= -f2- | tr -d '"')
+    printf 'Sistema: %s\n' "$pretty_name"
+    printf 'Kernel: %s\n' "$(uname -r)"
+    fish --version || true
+    pi --version || true
+    niri --version || true
+    printf '\nAplicaciones:\n'
+    for app in niri dms ghostty pi orca-ide zcode brave firefox burpsuite proton-pass pass-cli tailscale; do
       if command -v "$app" >/dev/null; then printf 'OK  %s\n' "$app"; else printf 'FALTA %s\n' "$app"; fi
     done
+    printf '\nNiri config:\n'
+    niri validate -c "$HOME/.config/niri/config.kdl" 2>&1 || true
+    printf '\nHome Manager:\n'
+    systemctl --no-pager --full status "home-manager-$USER.service" || true
+    printf '\nDMS:\n'
     systemctl --user --no-pager --full status dms.service || true
+    printf '\nTailscale:\n'
+    systemctl --no-pager --full status tailscaled.service || true
+    tailscale status || true
     ;;
   capture-desktop)
     source_file="$HOME/.config/DankMaterialShell/settings.json"

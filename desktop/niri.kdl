@@ -13,7 +13,7 @@ layout {
         proportion 0.66
         proportion 1.0
     }
-    default-column-width { proportion 0.66; }
+    default-column-width { proportion 1.0; }
     focus-ring {
         width 2
         active-color "#94b9a8"
@@ -69,3 +69,6 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+5%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
 }
+
+// DMS writes editable shortcuts here. Last include lets personal shortcuts override defaults.
+include optional=true "dms/binds.kdl"

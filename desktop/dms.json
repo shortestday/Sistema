@@ -26,7 +26,7 @@
     "spacing": 4, "innerPadding": 4, "barLengthPadding": 0, "bottomGap": 0,
     "attachToScreenEdge": true, "transparency": 1.0, "widgetTransparency": 1.0,
     "squareCorners": false, "noBackground": false, "widgetPadding": 8,
-    "fontScale": 1.0, "iconScale": 1.0, "autoHide": false, "visible": true,
+    "fontScale": 1.0, "iconScale": 1.0, "autoHide": true, "visible": true,
     "popupGapsAuto": true, "popupGapsManual": 4, "maximizeDetection": true,
     "useOverlayLayer": false, "scrollEnabled": true,
     "scrollXBehavior": "column", "scrollYBehavior": "workspace",

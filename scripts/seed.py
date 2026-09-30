@@ -13,8 +13,17 @@ def create_once(path, content):
         pass
 
 
+def create_once_or_empty(path, content):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() and path.stat().st_size > 0:
+        return
+    path.write_text(content, encoding="utf-8")
+    path.chmod(0o600)
+
+
 def seed(home, defaults, agents, study):
     create_once(home / ".config/DankMaterialShell/settings.json", defaults.read_text())
+    create_once_or_empty(home / ".config/niri/dms/binds.kdl", "binds {\n}\n")
     create_once(home / ".pi/agent/AGENTS.md", agents.read_text())
     root = home / "Estudio"
     create_once(root / "AGENTS.md", study.read_text())

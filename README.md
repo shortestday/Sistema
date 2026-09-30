@@ -96,7 +96,7 @@ Disko directamente contra esta plantilla ni inventes el identificador del HP.
 - Versiones fijadas no garantizan que sus descargas sigan disponibles para siempre.
 - No hay actualizaciones automaticas ni borrado automatico de generaciones.
 - Restic esta instalado; destino, frecuencia y prueba de restauracion siguen pendientes.
-- No hay servicios SSH entrantes habilitados ni agentes ejecutados como root.
+- SSH entrante está habilitado provisionalmente para administración local; root no puede entrar por SSH. Los agentes no se ejecutan como root.
 - Los agentes utilizan el proveedor de nube que configures y necesitan conexion.
 
 ## Fuentes tecnicas

@@ -16,12 +16,17 @@ in
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "hm-backup";
   home-manager.users.${host.username} = { lib, ... }: {
     home.stateVersion = "26.05";
     home.username = host.username;
     home.homeDirectory = "/home/${host.username}";
     home.packages = [ desk ];
     programs.bash.enable = true;
+    programs.fish = {
+      enable = true;
+      shellAliases.aplicar-sistema = "cd ~/Sistema && desk apply";
+    };
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
     programs.git.enable = true;

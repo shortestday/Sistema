@@ -11,6 +11,15 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = [ pkgs.networkmanager-openvpn ];
   networking.firewall.enable = true;
+  services.tailscale.enable = true;
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      PasswordAuthentication = true;
+      PermitRootLogin = "no";
+    };
+  };
   time.timeZone = host.timezone;
   i18n.defaultLocale = host.locale;
   services.xserver.xkb.layout = host.keyboard;
@@ -52,9 +61,10 @@
       "audio"
     ];
     initialHashedPassword = "!"; # Installer sets the password through stdin.
-    shell = pkgs.bashInteractive;
+    shell = pkgs.fish;
   };
   security.sudo.wheelNeedsPassword = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
   security.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -69,10 +79,12 @@
   services.udisks2.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+  programs.fish.enable = true;
   programs.niri.enable = true;
   programs.xwayland.enable = true;
   programs.dms-shell = {
     enable = true;
+    package = pkgs.callPackage ../packages/dms-personal.nix { };
     systemd.enable = true;
     enableDynamicTheming = false;
     enableAudioWavelength = false;
@@ -90,6 +102,10 @@
     brave
     firefox
     burpsuite
+    proton-pass
+    proton-pass-cli
+    tailscale
+    libsecret
     nautilus
     gnome-text-editor
     evince
