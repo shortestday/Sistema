@@ -13,6 +13,13 @@ contraseñas, tokens, claves privadas ni datos sensibles.
 - Para empujar por SSH hará falta clave SSH en la cuenta de GitHub (ya existe `~/.ssh/id_ed25519_tao` de tao; valorar generar una clave dedicada para GitHub).
 - Primer push: `git push -u origin main`.
 
+### Copias de seguridad con Restic
+
+- Restic ya está instalado en tao; falta decidir y configurar destino, frecuencia y prueba de restauración.
+- Destino propuesto: hermes por SSH (ya hay acceso por clave) u otro disco; decidir con el usuario.
+- Qué respaldar: ~/Documentos, ~/Estudio, ~/Sistema y configs de aplicaciones que interesen.
+- Planear: inicializar repo restic, contraseña (guardarla fuera del equipo, ej. Proton Pass), programación (systemd timer) y restauración de prueba real.
+
 ### Qué se sube a GitHub (aclaración)
 
 - Solo archivos de configuración: flake.nix, flake.lock, modules/, desktop/, scripts/, docs/, host/.
