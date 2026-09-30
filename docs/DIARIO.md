@@ -3,6 +3,24 @@
 Registro humano de cambios, decisiones y estado del portátil. No guardar aquí secretos,
 contraseñas, tokens, claves privadas ni datos sensibles.
 
+## 2026-10-01 (pendientes para mañana)
+
+### GitHub y correo para Git
+
+- Configurar identidad global de Git: `git config --global user.name` y `user.email` (ahora hay una local en este repo: `laotse <laotse@tao>`; el primer commit del instalador quedó como `Installer <installer@localhost>`).
+- Crear repositorio remoto en GitHub y añadirlo: `git remote add origin git@github.com:USUARIO/Sistema.git`.
+- Decidir visibilidad: el repo no contiene secretos, pero es preferible privado al principio.
+- Para empujar por SSH hará falta clave SSH en la cuenta de GitHub (ya existe `~/.ssh/id_ed25519_tao` de tao; valorar generar una clave dedicada para GitHub).
+- Primer push: `git push -u origin main`.
+
+### Qué se sube a GitHub (aclaración)
+
+- Solo archivos de configuración: flake.nix, flake.lock, modules/, desktop/, scripts/, docs/, host/.
+- Tamaño actual del repo: ~536 KB (34 archivos). El histórico Git: ~340 KB.
+- Los programas no van en el repo: Nix los descarga de cache.nixos.org según los hashes de flake.lock al aplicar en otra máquina.
+- Nunca subir: auth.json, claves SSH, tokens, contraseñas ni llaveros (viven fuera del repo, en ~/.pi, ~/.ssh, etc.).
+- Los rollbacks de NixOS no recuperan documentos ni datos de aplicaciones; GitHub solo replica la configuración del sistema.
+
 ## 2026-09-30
 
 ### SSH
