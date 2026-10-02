@@ -91,6 +91,13 @@
     enableCalendarEvents = false;
     enableSystemMonitoring = false;
   };
+  programs.firefox = {
+    enable = true;
+    policies.ExtensionSettings."foxyproxy@eric.h.jung" = {
+      installation_mode = "force_installed";
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/foxyproxy-standard/latest.xpi";
+    };
+  };
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
@@ -100,13 +107,13 @@
   environment.systemPackages = with pkgs; [
     ghostty
     brave
-    firefox
     burpsuite
     proton-pass
     proton-pass-cli
     tailscale
     libsecret
     nautilus
+    loupe
     gnome-text-editor
     evince
     agents.pi
@@ -155,6 +162,10 @@
   environment.etc."brave/policies/managed/personal.json".text = builtins.toJSON {
     BraveRewardsDisabled = true;
     BraveNewsDisabled = true;
+    ExtensionInstallForcelist = [
+      # Proton Pass: Free Password Manager
+      "ghmbeldphafepmbegfdlkpapadhbakde;https://clients2.google.com/service/update2/crx"
+    ];
   };
   environment.etc."personal-os.json".text = builtins.toJSON host;
 }

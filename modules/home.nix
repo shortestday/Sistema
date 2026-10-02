@@ -8,6 +8,7 @@ let
       curl
       git
       nixos-rebuild
+      nssTools
       python3
     ];
     text = builtins.readFile ../scripts/desk.sh;
@@ -42,6 +43,14 @@ in
         "x-scheme-handler/http" = [ "brave-browser.desktop" ];
         "x-scheme-handler/https" = [ "brave-browser.desktop" ];
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "image/avif" = [ "org.gnome.Loupe.desktop" ];
+        "image/bmp" = [ "org.gnome.Loupe.desktop" ];
+        "image/gif" = [ "org.gnome.Loupe.desktop" ];
+        "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+        "image/png" = [ "org.gnome.Loupe.desktop" ];
+        "image/svg+xml" = [ "org.gnome.Loupe.desktop" ];
+        "image/tiff" = [ "org.gnome.Loupe.desktop" ];
+        "image/webp" = [ "org.gnome.Loupe.desktop" ];
       };
     };
     xdg.configFile."niri/config.kdl".source = ../desktop/niri.kdl;
@@ -87,6 +96,12 @@ in
         icon = "firefox";
         categories = [ "Network" ];
       };
+      burp = {
+        name = "Burp Suite";
+        exec = "burpsuite";
+        icon = "applications-development";
+        categories = [ "Development" ];
+      };
       estudio = {
         name = "Retomar estudio";
         exec = "ghostty -e desk study";
@@ -102,6 +117,12 @@ in
       bienvenida = {
         name = "Primeros pasos";
         exec = "ghostty -e desk welcome";
+        icon = "help-browser";
+        categories = [ "System" ];
+      };
+      chuleta = {
+        name = "Chuleta del sistema";
+        exec = "ghostty -e desk chuleta";
         icon = "help-browser";
         categories = [ "System" ];
       };

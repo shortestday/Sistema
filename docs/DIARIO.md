@@ -3,6 +3,58 @@
 Registro humano de cambios, decisiones y estado del portátil. No guardar aquí secretos,
 contraseñas, tokens, claves privadas ni datos sensibles.
 
+## 2026-10-02
+
+### Actualización del sistema y herramientas de archivos
+
+- Actualizado `flake.lock` para traer versiones recientes de `nixpkgs`, Home Manager y `llm-agents.nix`.
+- Aplicado el sistema actualizado; comprobado activo `26.05.20260930.78e9c78`.
+- Firefox quedó en `157.0`, Pi en `1.0.0` y Orca en `1.4.218`.
+- Añadido Yazi como explorador de archivos por terminal. Comprobado `yazi 26.5.6` activo.
+- Commit realizado: `9afa54a Actualizar sistema y añadir Yazi`.
+
+### Fondos, imágenes y exploración visual
+
+- Generada selección de fondos cyberpunk/pixel-art/synthwave/Japón desde Wallhaven.
+- Primero se dejaron miniaturas en `~/Pictures/Wallpapers/candidatos-4k`; después se descargaron los fondos completos en `~/Pictures/Wallpapers/4k-full`.
+- La descarga completa contiene 40 imágenes 4K/5K/8K, unos 157 MiB, fuera del repo Git.
+- Añadido Loupe como visor de imágenes dedicado.
+- Declaradas asociaciones MIME para abrir PNG/JPEG/WEBP/GIF/AVIF/BMP/TIFF/SVG con Loupe en vez de Brave.
+
+### Brave, Proton Pass y Firefox Lab
+
+- Añadida instalación declarativa de la extensión Proton Pass en Brave mediante política `ExtensionInstallForcelist`.
+- Recordatorio: la aplicación Proton Pass instalada no da autocompletado web por sí sola; el autocompletado depende de la extensión del navegador.
+- Revisada la documentación/opciones oficiales de NixOS para `programs.firefox.policies`.
+- Añadida instalación declarativa de FoxyProxy Standard en Firefox mediante `ExtensionSettings`.
+- Se mantiene Firefox Lab como navegador separado para pruebas/Burp.
+
+### Burp Suite y FoxyProxy
+
+- Preparada configuración importable de FoxyProxy para Burp en `docs/foxyproxy-burp.json`.
+- Burp escucha correctamente en `127.0.0.1:8080`.
+- Importado el certificado CA de Burp en el perfil Firefox Lab (`~/.mozilla/firefox-lab`) con confianza TLS.
+- Añadidos comandos:
+  - `desk burp` para lanzar Burp Suite.
+  - `desk burp-cert` para importar/reimportar el certificado CA de Burp en Firefox Lab, con Burp abierto.
+- Añadido lanzador de escritorio `Burp Suite`.
+- Burp empaquetado por NixOS observado en versión `2026.4.3`; avisó de que JRE `21.0.12` no está “fully tested”. Se consideró seguro continuar mientras no haya fallos reales.
+- Burp avisó de actualización a `2026.8`; decisión: no actualizar desde el instalador interno, sino mediante Nix/`flake.lock`.
+- Existe un instalador descargado en `~/Downloads/burpsuite_linux_v2026_8.sh`; no ejecutarlo. Valorar borrarlo.
+- Comentada la alternativa OWASP ZAP: proxy/interceptor libre con scanner activo. Decisión actual: seguir con Burp Community; no instalar Caido ni ZAP por ahora.
+
+### Chuleta del sistema
+
+- Creada `docs/CHULETA.md` con atajos básicos de Niri/DMS, escritorios, archivos, Yazi, fondos, comandos `desk`, Brave/Proton y Burp.
+- Añadido comando `desk chuleta` y lanzador `Chuleta del sistema`.
+- Actualizada la ayuda de `desk` con los nuevos comandos.
+
+### Validación
+
+- Ejecutado `desk check` tras los cambios de Loupe, Proton Pass, Firefox/FoxyProxy, chuleta y Burp.
+- Resultado: validación y construcción correctas.
+- Pendiente tras aplicar: reiniciar Firefox Lab para que use el certificado importado y comprobar navegación HTTPS con FoxyProxy activo.
+
 ## 2026-10-01 (pendientes para mañana)
 
 ### GitHub y correo para Git
