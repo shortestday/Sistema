@@ -82,6 +82,7 @@
   services.gnome.gnome-keyring.enable = true;
 
   programs.fish.enable = true;
+  programs.nix-index.enable = true;
   programs.niri.enable = true;
   programs.xwayland.enable = true;
   programs.dms-shell = {
@@ -131,6 +132,12 @@
     bat
     yazi
     btop
+    usbutils
+    pciutils
+    lm_sensors
+    vulkan-tools
+    clinfo
+    powertop
     unzip
     zip
     openssh

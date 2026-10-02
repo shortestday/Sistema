@@ -55,6 +55,16 @@ contraseñas, tokens, claves privadas ni datos sensibles.
 - Resultado: validación y construcción correctas.
 - Pendiente tras aplicar: reiniciar Firefox Lab para que use el certificado importado y comprobar navegación HTTPS con FoxyProxy activo.
 
+### Mantenimiento NixOS y diagnóstico
+
+- Activado `services.btrfs.autoScrub.enable` para scrubs periódicos del Btrfs; timer observado para el día 1 de cada mes.
+- Desactivada la edición interactiva de entradas de systemd-boot: `boot.loader.systemd-boot.editor = false`.
+- Mejorado `desk check/apply` para mostrar diferencias entre generaciones con `nvd`.
+- Cambiada la confirmación de `desk apply`: ahora pide un PIN numérico aleatorio de 4 cifras en vez de escribir `APLICAR`.
+- Añadido `programs.nix-index.enable` para localizar paquetes que proporcionan comandos/archivos.
+- Añadidas herramientas pequeñas de diagnóstico: `usbutils`, `pciutils`, `lm_sensors`, `vulkan-tools`, `clinfo` y `powertop`.
+- Queda pendiente diseñar backups con Restic; un mini NAS de 2 bahías sería buen destino, recordando que RAID no sustituye backups versionados.
+
 ## 2026-10-01 (pendientes para mañana)
 
 ### GitHub y correo para Git
