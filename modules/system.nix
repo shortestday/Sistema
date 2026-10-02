@@ -120,6 +120,7 @@
     fd
     fzf
     bat
+    yazi
     btop
     unzip
     zip
