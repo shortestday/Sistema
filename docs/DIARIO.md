@@ -48,6 +48,7 @@ contraseñas, tokens, claves privadas ni datos sensibles.
 - Creada `docs/CHULETA.md` con atajos básicos de Niri/DMS, escritorios, archivos, Yazi, fondos, comandos `desk`, Brave/Proton y Burp.
 - Añadido comando `desk chuleta` y lanzador `Chuleta del sistema`.
 - Actualizada la ayuda de `desk` con los nuevos comandos.
+- Ampliada la chuleta con una sección rápida de Yazi: navegación, selección, copiar/cortar/pegar, renombrar, buscar y ayuda.
 
 ### Validación
 
@@ -63,7 +64,26 @@ contraseñas, tokens, claves privadas ni datos sensibles.
 - Cambiada la confirmación de `desk apply`: ahora pide un PIN numérico aleatorio de 4 cifras en vez de escribir `APLICAR`.
 - Añadido `programs.nix-index.enable` para localizar paquetes que proporcionan comandos/archivos.
 - Añadidas herramientas pequeñas de diagnóstico: `usbutils`, `pciutils`, `lm_sensors`, `vulkan-tools`, `clinfo` y `powertop`.
-- Queda pendiente diseñar backups con Restic; un mini NAS de 2 bahías sería buen destino, recordando que RAID no sustituye backups versionados.
+
+### GitHub
+
+- Configurada la identidad Git declarativa en Home Manager: `shortestday <shortestday@proton.me>`.
+- Añadida la clave pública SSH de `tao` a GitHub; autenticación comprobada con `ssh -T git@github.com`.
+- Creado y enlazado remoto `origin` en `git@github.com:shortestday/Sistema.git`.
+- Primer `git push -u origin main` realizado correctamente.
+- Los cambios posteriores ya se han empujado a GitHub.
+
+### Backups: deuda técnica consciente
+
+- Restic está instalado, pero no se configura todavía por falta de destino definitivo.
+- Decisión: no usar `hermes` como destino principal porque ya tiene sus propios datos/carga y no conviene mezclar responsabilidades ni ocupar su espacio.
+- Opciones futuras:
+  - Disco USB externo dedicado como solución barata e inmediata.
+  - Mini NAS propio si se decide montar uno.
+  - NAS comercial tipo Synology/QNAP solo si compensa precio/comodidad.
+- Cuando exista destino, configurar Restic con contraseña guardada fuera del repo, idealmente en Proton Pass.
+- Debe incluir prueba real de restauración; un backup sin restauración probada no se considera terminado.
+- Recordatorio: RAID/espejo no sustituye backups versionados.
 
 ## 2026-10-01 (pendientes para mañana)
 
