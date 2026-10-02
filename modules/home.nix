@@ -31,7 +31,13 @@ in
     };
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
-    programs.git.enable = true;
+    programs.git = {
+      enable = true;
+      settings.user = {
+        name = "shortestday";
+        email = "shortestday@proton.me";
+      };
+    };
     xdg.enable = true;
     xdg.userDirs = {
       enable = true;
