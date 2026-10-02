@@ -9,6 +9,7 @@ let
       git
       nixos-rebuild
       nssTools
+      nvd
       python3
     ];
     text = builtins.readFile ../scripts/desk.sh;

@@ -30,11 +30,16 @@ case "$action" in
   check|apply)
     [[ -f "$repo/flake.lock" ]] || { echo 'No encuentro ~/Sistema/flake.lock'; exit 1; }
     nix flake check "path:$repo" --no-update-lock-file
-    nix build "path:$repo#nixosConfigurations.elitebook.config.system.build.toplevel" --no-link --no-update-lock-file
+    new_system=$(nix build "path:$repo#nixosConfigurations.elitebook.config.system.build.toplevel" --no-link --print-out-paths --no-update-lock-file)
+    if [[ -e /run/current-system ]] && command -v nvd >/dev/null; then
+      printf '\nCambios de la generacion activa a la preparada:\n'
+      nvd diff /run/current-system "$new_system" || true
+    fi
     if [[ "$action" == apply ]]; then
       git -C "$repo" diff --stat
-      read -r -p 'Aplicar esta configuracion? Escribe APLICAR: ' answer
-      [[ "$answer" == APLICAR ]] || exit 1
+      pin=$(shuf -i 1000-9999 -n 1)
+      read -r -p "Aplicar esta configuracion? Escribe el PIN $pin: " answer
+      [[ "$answer" == "$pin" ]] || exit 1
       sudo nixos-rebuild switch --flake "path:$repo#elitebook" --no-update-lock-file
     fi
     ;;

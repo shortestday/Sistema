@@ -27,6 +27,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.editor = false;
   boot.loader.efi.canTouchEfiVariables = true;
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
@@ -34,6 +35,7 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
   zramSwap.enable = true;
+  services.btrfs.autoScrub.enable = true;
 
   nix.settings.experimental-features = [
     "nix-command"
