@@ -35,6 +35,24 @@
 - Buscar archivos: `fd texto`.
 - Buscar dentro de archivos: `rg texto`.
 
+### Yazi rapido
+
+- `↑` / `↓`: subir y bajar.
+- `←`: volver a la carpeta anterior.
+- `→` o `Enter`: entrar/abrir.
+- `q`: salir.
+- `Space`: seleccionar archivo.
+- `y`: copiar.
+- `x`: cortar.
+- `p`: pegar.
+- `d`: borrar/enviar a papelera.
+- `r`: renombrar.
+- `a`: crear archivo o carpeta.
+- `/`: buscar en la carpeta.
+- `s`: buscar con `fd`.
+- `.`: mostrar/ocultar archivos ocultos.
+- `?`: ayuda de Yazi.
+
 ## Imagenes y fondos
 
 - Visor de imagenes: Loupe.
